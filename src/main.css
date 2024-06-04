@@ -1,7 +1,3 @@
-.items {
-    margin: 0;
-    padding: 0;
-    display: grid;
-    grid-template-columns: repeat(4, calc(25% - 25px));
-    gap:25px;
+#root {
+    width: 100vw
 }

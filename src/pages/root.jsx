@@ -8,11 +8,9 @@ const Root = () => {
       <header>
         <ContactsNavbar />
       </header>
-      <section>
-        <Container className="mt-3">
-          <Outlet />
-        </Container>
-      </section>
+      <Container className="mt-3">
+        <Outlet />
+      </Container>
     </>
   );
 };

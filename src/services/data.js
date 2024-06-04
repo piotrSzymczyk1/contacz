@@ -28,6 +28,14 @@ export const getStorageData = () => {
     return data;
   }
 };
+export const getContact = (id) => {
+  const data = JSON.parse(localStorage.getItem("data"));
+  const contact = data.find((contact) => contact.id === id);
+  if (!contact) {
+    return null;
+  }
+  return contact;
+};
 export const addNew = (contact) => {
   const data = JSON.parse(localStorage.getItem("data"));
   if (Object.keys(contact).length > 0) {
@@ -35,5 +43,12 @@ export const addNew = (contact) => {
     data.push(contact);
     localStorage.setItem("data", JSON.stringify(data));
   }
+  return data;
+};
+export const deleteContact = (id) => {
+  const data = JSON.parse(localStorage.getItem("data"));
+  const index = data.findIndex((contact) => contact.id === id);
+  data.splice(index, 1);
+  localStorage.setItem("data", JSON.stringify(data));
   return data;
 };
