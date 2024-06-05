@@ -5,19 +5,22 @@ import Root from "./pages/root.jsx";
 import RouterError from "./pages/routerError.jsx";
 import ContactList from "./components/contactList.jsx";
 import Contact from "./pages/contact.jsx";
-import { rootAction, rootLoader } from "./services/rootLoader.js";
-import { contactLoader } from "./services/contactActions.js";
-import { deleteAction } from "./services/deleteActions.js";
+import EditNew from "./pages/editNew.jsx";
+import { rootLoader } from "./services/rootActions.js";
+import {
+  contactLoader,
+  editAction,
+  addNewAction,
+  deleteAction,
+} from "./services/contactActions.js";
 import "bootstrap-icons/font/bootstrap-icons.css";
 import "bootstrap/dist/css/bootstrap.min.css";
-import "./main.css";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <Root />,
     errorElement: <RouterError />,
-    action: rootAction,
     children: [
       { index: true, element: <ContactList />, loader: rootLoader },
       {
@@ -26,8 +29,19 @@ const router = createBrowserRouter([
         loader: contactLoader,
       },
       {
+        path: "contacts/:id/edit",
+        element: <EditNew />,
+        loader: contactLoader,
+        action: editAction,
+      },
+      {
         path: "contacts/:id/delete",
         action: deleteAction,
+      },
+      {
+        path: "contacts/new",
+        element: <EditNew />,
+        action: addNewAction,
       },
     ],
   },

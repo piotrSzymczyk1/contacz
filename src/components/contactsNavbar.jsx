@@ -1,5 +1,5 @@
-import { Button, Navbar, Nav, Container } from "react-bootstrap";
-import { Link, Form, useLocation } from "react-router-dom";
+import { Navbar, Nav, Container } from "react-bootstrap";
+import { Link, useLocation } from "react-router-dom";
 
 const ContactsNavbar = () => {
   const location = useLocation();
@@ -13,13 +13,11 @@ const ContactsNavbar = () => {
               Contact List
             </Link>
           )}
-          <Navbar.Text className="mx-2">
-            <Form method="post">
-              <Button size="sm" type="submit" variant="success">
-                New contact
-              </Button>
-            </Form>
-          </Navbar.Text>
+          {!location.pathname.includes("new") && (
+            <Link to="/contacts/new" type="submit" className="nav-link mx-2">
+              New contact
+            </Link>
+          )}
         </Nav>
       </Container>
     </Navbar>

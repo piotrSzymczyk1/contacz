@@ -11,7 +11,9 @@ const RouterError = () => {
         <h1>An error has occured</h1>
         <p>{error.statusText || error.message}</p>
         <p>
-          <Link to="/">Go to main page</Link>
+          <Link to="/" className="text-reset">
+            Go to main page
+          </Link>
         </p>
       </div>
     </Container>
